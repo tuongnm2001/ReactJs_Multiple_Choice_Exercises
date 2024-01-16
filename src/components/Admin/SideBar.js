@@ -8,8 +8,10 @@ import {
     SidebarFooter,
     SidebarContent,
 } from 'react-pro-sidebar';
+import { AiTwotoneStar } from "react-icons/ai";
+import { MdDashboardCustomize, MdOutlineManageAccounts } from "react-icons/md";
 
-import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { DiReact, FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 import sidebarBg from '../../assest/bg2.jpg';
 import './SideBar.scss'
 
@@ -37,30 +39,28 @@ const SideBar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        Test Exerciese
+                        <AiTwotoneStar size={'2rem'} color={"00bfff"} />
+                        <span style={{ marginLeft: "5px" }}>Test Exerciese</span>
                     </div>
                 </SidebarHeader>
 
                 <SidebarContent>
                     <Menu iconShape="circle">
                         <MenuItem
-                            icon={<FaTachometerAlt />}
-                            suffix={<span className="badge red">New</span>}
+                            icon={<MdDashboardCustomize />}
                         >
-                            dashboard
+                            Dashboard
                         </MenuItem>
-                        <MenuItem icon={<FaGem />}> components </MenuItem>
                     </Menu>
-                    <Menu iconShape="circle">
+                    <Menu iconShape='circle'>
                         <SubMenu
-                            suffix={<span className="badge yellow"></span>}
-                            icon={<FaRegLaughWink />}
+                            icon={<MdOutlineManageAccounts />}
+                            title="Manages"
                         >
-                            <MenuItem> 1</MenuItem>
-                            <MenuItem> 2</MenuItem>
-                            <MenuItem> 3</MenuItem>
+                            <MenuItem>Quản lí Users</MenuItem>
+                            <MenuItem>Quản lí bài Quiz</MenuItem>
+                            <MenuItem>Quản lí câu hỏi</MenuItem>
                         </SubMenu>
-
                     </Menu>
                 </SidebarContent>
 
@@ -79,7 +79,7 @@ const SideBar = (props) => {
                         >
                             <FaGithub />
                             <span style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden', textDecoration: 'none' }}>
-                                Visit my Github
+                                View my Github
                             </span>
                         </a>
                     </div>
