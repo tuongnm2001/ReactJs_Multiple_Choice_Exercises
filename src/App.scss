@@ -10,12 +10,46 @@ body {
 
 .app-container {
   .header-container {
-    .navbar-nav {
-      .nav-link {
-        &.active {
-          color  : #00bfff;
-        }
+
+    .btn-login {
+      border        : 1px solid #535353;
+      margin-right  : 15px;
+    }
+
+    .nav-link {
+      &.active {
+        color  : #00bfff;
       }
     }
   }
+
+  .homepage-content {
+    padding  : 130px 80px;
+    width    : 50%;
+
+    .title1 {
+      line-height  : 1;
+      font-size    : 48px;
+    }
+
+    .title2 {
+      font-size  : 24px;
+      margin     : 16px 0px;
+    }
+
+    .btn-homepage {
+      border  : 1px solid #535353;
+    }
+
+  }
+}
+
+video {
+  position    : absolute;
+  z-index     : -1;
+  object-fit  : cover;
+  top         : 0;
+  left        : 0;
+  width       : 100%;
+  height      : 100vh;
 }

@@ -18,6 +18,10 @@ const Header = () => {
                     </Nav>
 
                     <Nav>
+                        <div className="d-grid gap-2 d-md-block">
+                            <button className='btn btn-login'>Login</button>
+                            <button className='btn btn-dark'>Sign up</button>
+                        </div>
                         <NavDropdown title="Settings" id="basic-nav-dropdown">
                             <NavDropdown.Item>Login</NavDropdown.Item>
                             <NavDropdown.Item>Logout</NavDropdown.Item>
