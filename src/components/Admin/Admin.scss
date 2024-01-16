@@ -1,0 +1,15 @@
+.admin-container {
+    display  : flex;
+
+    .admin-sidebar {
+        .pro-sidebar {
+            height  : 100vh !important;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        // CSS cho màn hình máy tính bảng
+        flex-direction  : row;
+        width           : 100%;
+    }
+}
