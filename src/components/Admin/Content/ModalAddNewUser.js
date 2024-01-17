@@ -3,10 +3,20 @@ import Modal from 'react-bootstrap/Modal';
 import './ModalAddNewUser.scss'
 import { MdOutlineFileUpload } from "react-icons/md";
 import { useState } from 'react';
+import axios from 'axios';
 
 const ModalAddNewUser = (props) => {
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false)
+        setEmail("")
+        setPassword("")
+        setUsername("")
+        setRole("")
+        setImage("")
+        setPreviewImg("")
+    }
+
     const { show, setShow } = props
 
     const [email, setEmail] = useState('')
@@ -21,7 +31,18 @@ const ModalAddNewUser = (props) => {
             setPreviewImg(URL.createObjectURL(event.target.files[0]))
             setImage(event.target.files[0])
         }
-        console.log('check setImg : ', image);
+    }
+
+    const handleSubmitAddUser = async () => {
+        const data = new FormData();
+        data.append('email', email)
+        data.append('password', password)
+        data.append('username', username)
+        data.append('role', role)
+        data.append('userImage', image)
+
+        let res = await axios.post('http://localhost:8081/api/v1/participant', data);
+        handleClose();
     }
 
     return (
@@ -108,7 +129,7 @@ const ModalAddNewUser = (props) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary">Save</Button>
+                    <Button variant="primary" onClick={() => handleSubmitAddUser()}>Save</Button>
                 </Modal.Footer>
             </Modal>
         </>
