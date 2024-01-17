@@ -4,18 +4,9 @@ import './ModalAddNewUser.scss'
 import { MdOutlineFileUpload } from "react-icons/md";
 import { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const ModalAddNewUser = (props) => {
-
-    const handleClose = () => {
-        setShow(false)
-        setEmail("")
-        setPassword("")
-        setUsername("")
-        setRole("")
-        setImage("")
-        setPreviewImg("")
-    }
 
     const { show, setShow } = props
 
@@ -26,6 +17,16 @@ const ModalAddNewUser = (props) => {
     const [image, setImage] = useState('')
     const [previewImg, setPreviewImg] = useState('')
 
+    const handleClose = () => {
+        setShow(false)
+        setEmail("")
+        setPassword("")
+        setUsername("")
+        setRole("USER")
+        setImage("")
+        setPreviewImg("")
+    }
+
     const handleUploadImage = (event) => {
         if (event.target && event.target.files && event.target.files[0]) {
             setPreviewImg(URL.createObjectURL(event.target.files[0]))
@@ -33,7 +34,29 @@ const ModalAddNewUser = (props) => {
         }
     }
 
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+
     const handleSubmitAddUser = async () => {
+
+        const isValidEmail = validateEmail(email);
+
+        if (!isValidEmail) {
+            toast.error("Invalid Email")
+            return;
+        }
+
+        if (!password) {
+            toast.error("Invalid Password")
+            return;
+        }
+
+        //submit data
         const data = new FormData();
         data.append('email', email)
         data.append('password', password)
@@ -42,8 +65,17 @@ const ModalAddNewUser = (props) => {
         data.append('userImage', image)
 
         let res = await axios.post('http://localhost:8081/api/v1/participant', data);
+        if (res.data && res.data.EC === 0) {
+            toast.success(res.data.EM)
+        }
+
+        if (res.data && res.data.EC === 1) {
+            toast.error(res.data.EM)
+            return;
+        }
         handleClose();
     }
+
 
     return (
         <>
