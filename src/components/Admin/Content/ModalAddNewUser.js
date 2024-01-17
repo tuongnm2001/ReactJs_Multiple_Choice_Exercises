@@ -3,8 +3,8 @@ import Modal from 'react-bootstrap/Modal';
 import './ModalAddNewUser.scss'
 import { MdOutlineFileUpload } from "react-icons/md";
 import { useState } from 'react';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import { postCreateNewUser } from '../../../services/apiService';
 
 const ModalAddNewUser = (props) => {
 
@@ -56,21 +56,13 @@ const ModalAddNewUser = (props) => {
             return;
         }
 
-        //submit data
-        const data = new FormData();
-        data.append('email', email)
-        data.append('password', password)
-        data.append('username', username)
-        data.append('role', role)
-        data.append('userImage', image)
-
-        let res = await axios.post('http://localhost:8081/api/v1/participant', data);
-        if (res.data && res.data.EC === 0) {
-            toast.success(res.data.EM)
+        let data = await postCreateNewUser(email, password, username, role, image)
+        if (data && data.EC === 0) {
+            toast.success(data.EM)
         }
 
-        if (res.data && res.data.EC === 1) {
-            toast.error(res.data.EM)
+        if (data && data.EC === 1) {
+            toast.error(data.EM)
             return;
         }
         handleClose();
