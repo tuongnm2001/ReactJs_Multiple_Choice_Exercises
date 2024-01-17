@@ -14,6 +14,7 @@ import { MdDashboardCustomize, MdOutlineManageAccounts } from "react-icons/md";
 import { DiReact, FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 import sidebarBg from '../../assest/bg2.jpg';
 import './SideBar.scss'
+import { Link } from 'react-router-dom';
 
 const SideBar = (props) => {
     const { image, collapsed, toggled, handleToggleSidebar } = props;
@@ -50,6 +51,7 @@ const SideBar = (props) => {
                             icon={<MdDashboardCustomize />}
                         >
                             Dashboard
+                            <Link to={'/admin'} />
                         </MenuItem>
                     </Menu>
                     <Menu iconShape='circle'>
@@ -57,7 +59,10 @@ const SideBar = (props) => {
                             icon={<MdOutlineManageAccounts />}
                             title="Manages"
                         >
-                            <MenuItem>Quản lí Users</MenuItem>
+                            <MenuItem>
+                                Quản lí Users
+                                <Link to={'/admin/manage-user'} />
+                            </MenuItem>
                             <MenuItem>Quản lí bài Quiz</MenuItem>
                             <MenuItem>Quản lí câu hỏi</MenuItem>
                         </SubMenu>

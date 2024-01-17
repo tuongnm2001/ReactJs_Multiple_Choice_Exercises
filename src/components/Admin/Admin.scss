@@ -7,9 +7,16 @@
         }
     }
 
-    @media screen and (max-width: 768px) {
-        // CSS cho màn hình máy tính bảng
-        flex-direction  : row;
-        width           : 100%;
+    .admin-content {
+        width  : 100%;
+
+        .admin-header {
+            height  : 40px;
+            border  : 1px solid green;
+        }
+
+        .admin-main {
+            border  : 1px solid red;
+        }
     }
 }
