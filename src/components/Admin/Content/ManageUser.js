@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ModalAddNewUser from '../Content/ModalAddNewUser';
 import './ManageUser.scss'
 import { TiPlus } from "react-icons/ti";
+import TableUser from './TableUser';
 const ManageUser = () => {
     const [show, setShow] = useState(false)
 
@@ -13,13 +14,13 @@ const ManageUser = () => {
 
             <div className="users-content">
                 <div>
-                    <button className='btn btn-success' onClick={() => setShow(true)}>
+                    <button className='btn btn-success my-3' onClick={() => setShow(true)}>
                         <TiPlus /> Add New User
                     </button>
                 </div>
 
                 <div>
-                    table
+                    <TableUser />
                 </div>
 
                 <ModalAddNewUser
