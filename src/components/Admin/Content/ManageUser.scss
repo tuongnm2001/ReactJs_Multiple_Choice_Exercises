@@ -1,7 +1,11 @@
 .manage-user-container {
     padding  : 10px;
 
-    .title {}
+    .title {
+        font-size    : 25px;
+        font-weight  : 600;
+        text-align   : center;
+    }
 
     .users-content {}
 }
