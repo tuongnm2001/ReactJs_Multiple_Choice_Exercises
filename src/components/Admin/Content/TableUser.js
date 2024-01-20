@@ -28,14 +28,25 @@ const TableUser = (props) => {
                                         <td>{item.username}</td>
                                         <td>{item.role}</td>
                                         <td>
-                                            <button className="btn btn-info "><FaEye /> View</button>
+                                            <button
+                                                className="btn btn-info "
+                                                onClick={() => props.handleClickViewUser(item)}
+                                            >
+                                                <FaEye /> View
+                                            </button>
+
                                             <button
                                                 className="btn btn-warning mx-3"
                                                 onClick={() => props.handleClickUpdateUser(item)}
                                             >
                                                 <FaUserEdit /> Edit
                                             </button>
-                                            <button className="btn btn-danger"><AiOutlineUserDelete /> Delete</button>
+                                            <button
+                                                className="btn btn-danger"
+                                                onClick={() => { props.handleClickDeleteUser(item) }}
+                                            >
+                                                <AiOutlineUserDelete /> Delete
+                                            </button>
                                         </td>
                                     </tr>
                                 )
