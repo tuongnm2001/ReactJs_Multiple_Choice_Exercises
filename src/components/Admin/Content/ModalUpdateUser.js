@@ -4,7 +4,7 @@ import './ModalUpdateUser.scss'
 import { MdOutlineFileUpload } from "react-icons/md";
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { postCreateNewUser } from '../../../services/apiService';
+import { postCreateNewUser, putUpdateNewUser } from '../../../services/apiService';
 import _ from 'lodash'
 
 const ModalUpdateUser = (props) => {
@@ -40,29 +40,9 @@ const ModalUpdateUser = (props) => {
         }
     }
 
-    const validateEmail = (email) => {
-        return String(email)
-            .toLowerCase()
-            .match(
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            );
-    };
+    const handleSubmitUpdateUser = async () => {
 
-    const handleSubmitAddUser = async () => {
-
-        const isValidEmail = validateEmail(email);
-
-        if (!isValidEmail) {
-            toast.error("Invalid Email")
-            return;
-        }
-
-        if (!password) {
-            toast.error("Invalid Password")
-            return;
-        }
-
-        let data = await postCreateNewUser(email, password, username, role, image)
+        let data = await putUpdateNewUser(dataUpdate.id, username, role, image)
         if (data && data.EC === 0) {
             toast.success(data.EM)
             handleClose();
@@ -162,7 +142,7 @@ const ModalUpdateUser = (props) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={() => handleSubmitAddUser()}>Save</Button>
+                    <Button variant="primary" onClick={() => handleSubmitUpdateUser()}>Save</Button>
                 </Modal.Footer>
             </Modal>
         </>

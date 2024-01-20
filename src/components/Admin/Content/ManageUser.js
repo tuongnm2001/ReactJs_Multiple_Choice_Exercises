@@ -58,6 +58,7 @@ const ManageUser = () => {
                     show={showModalUpdateUser}
                     setShow={setShowModalUpdateUser}
                     dataUpdate={dataUpdate}
+                    fetAllUser={fetAllUser}
                 />
             </div>
         </div>
