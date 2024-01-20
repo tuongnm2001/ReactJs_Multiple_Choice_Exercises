@@ -7,17 +7,19 @@ import { toast } from 'react-toastify';
 
 const ModalDeleteUser = (props) => {
 
-    const { show, setShow, dataDeleteUser, fetAllUser } = props;
+    const { show, setShow, dataDeleteUser, fetAllUser, fetAllUserWithPaginate, setCurrentPage } = props;
 
     const handleClose = () => {
         setShow(false);
     }
 
     const handleDeleteUser = async () => {
-        let res = await deleteUser(dataDeleteUser);
+        let res = await deleteUser(dataDeleteUser.id);
         if (res && res.EC === 0) {
             toast.success(res.EM)
-            fetAllUser()
+            // fetAllUser()
+            setCurrentPage(1)
+            await fetAllUserWithPaginate(1)
             handleClose()
         } else {
             toast.error(res.EM)

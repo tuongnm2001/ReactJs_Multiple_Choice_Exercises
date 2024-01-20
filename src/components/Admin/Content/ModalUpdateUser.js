@@ -11,7 +11,7 @@ import { BsArrowRepeat } from "react-icons/bs";
 
 const ModalUpdateUser = (props) => {
 
-    const { show, setShow, fetAllUser, dataUpdate } = props
+    const { show, setShow, fetAllUser, dataUpdate, currentPage } = props
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -47,8 +47,9 @@ const ModalUpdateUser = (props) => {
         let data = await putUpdateNewUser(dataUpdate.id, username, role, image)
         if (data && data.EC === 0) {
             toast.success(data.EM)
+            // await fetAllUser();
+            await props.fetAllUserWithPaginate(currentPage);
             handleClose();
-            await fetAllUser();
         }
 
         if (data && data.EC === 1) {

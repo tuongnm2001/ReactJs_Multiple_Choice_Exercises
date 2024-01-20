@@ -14,10 +14,17 @@ import { MdDashboardCustomize, MdOutlineManageAccounts } from "react-icons/md";
 import { DiReact, FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 import sidebarBg from '../../assest/bg2.jpg';
 import './SideBar.scss'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SideBar = (props) => {
+
     const { image, collapsed, toggled, handleToggleSidebar } = props;
+    const navigate = useNavigate()
+
+    const handleGoHome = () => {
+        navigate('/')
+    }
+
     return (
         <>
             <ProSidebar
@@ -27,8 +34,8 @@ const SideBar = (props) => {
                 breakPoint="md"
                 onToggle={handleToggleSidebar}
             >
-                <SidebarHeader>
-                    <div
+                <SidebarHeader onClick={() => handleGoHome()}>
+                    <div className='title'
                         style={{
                             padding: '24px',
                             textTransform: 'uppercase',
@@ -41,7 +48,7 @@ const SideBar = (props) => {
                         }}
                     >
                         <AiTwotoneStar size={'2rem'} color={"00bfff"} />
-                        <span style={{ marginLeft: "5px" }}>Test Exerciese</span>
+                        <span>Test Exerciese</span>
                     </div>
                 </SidebarHeader>
 
@@ -57,7 +64,7 @@ const SideBar = (props) => {
                     <Menu iconShape='circle'>
                         <SubMenu
                             icon={<MdOutlineManageAccounts />}
-                            title="Manages"
+                            title="Managers"
                         >
                             <MenuItem>
                                 Quản lí Users

@@ -5,10 +5,12 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { postCreateNewUser } from '../../../services/apiService';
+import { IoClose } from "react-icons/io5";
+import { IoSaveOutline } from "react-icons/io5";
 
 const ModalAddNewUser = (props) => {
 
-    const { show, setShow, fetAllUser } = props
+    const { show, setShow, fetAllUser, setCurrentPage } = props
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -59,8 +61,10 @@ const ModalAddNewUser = (props) => {
         let data = await postCreateNewUser(email, password, username, role, image)
         if (data && data.EC === 0) {
             toast.success(data.EM)
+            // await fetAllUser();
             handleClose();
-            await fetAllUser();
+            setCurrentPage(1)
+            await props.fetAllUserWithPaginate(1)
         }
 
         if (data && data.EC === 1) {
@@ -152,9 +156,11 @@ const ModalAddNewUser = (props) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        <IoClose /> Close
                     </Button>
-                    <Button variant="primary" onClick={() => handleSubmitAddUser()}>Save</Button>
+                    <Button variant="primary" onClick={() => handleSubmitAddUser()}>
+                        <IoSaveOutline /> Save
+                    </Button>
                 </Modal.Footer>
             </Modal>
         </>
