@@ -1,0 +1,73 @@
+.login-container {
+    .header {
+        height      : 45px;
+        text-align  : right;
+        padding     : 8px 24px;
+
+        .dhay {
+            font-size      : 14px;
+            padding-right  : 5px;
+
+        }
+
+        .btnSignup {
+            font-size         : 12px;
+            border            : 1px solid #252424;
+            padding           : 5px 12px;
+            color             : rgb(38, 38, 39);
+            background-color  : rgb(255, 255, 255);
+            border-radius     : 3px;
+        }
+    }
+
+    .title-login {
+        text-align   : center;
+        font-size    : 24px;
+        font-weight  : 600;
+        margin-top   : 24px;
+        cursor       : pointer;
+
+    }
+
+
+
+    .content-form {
+        margin-top      : 30px;
+        display         : flex;
+        flex-direction  : column;
+        padding-left    : 72px;
+        padding-right   : 72px;
+
+        input {
+            margin  : 10px 0;
+        }
+
+        .welcome {
+            font-size    : 20px;
+            line-height  : 24px;
+            font-weight  : 400;
+            color        : rgb(76, 76, 76);
+            text-align   : center;
+            margin       : 0 0 15px;
+
+        }
+
+        .forgotPassword {
+            margin-bottom    : 25px;
+            text-decoration  : underline;
+            font-size        : 14px;
+            color            : #777;
+            cursor           : pointer;
+        }
+
+        button {
+            border-radius  : 4px;
+            font-size      : 16px;
+            height         : 40px;
+            border         : none;
+            color          : #fff;
+            background     : #262627;
+            width          : 100%;
+        }
+    }
+}
