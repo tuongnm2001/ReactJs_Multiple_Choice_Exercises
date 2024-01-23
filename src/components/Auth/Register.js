@@ -33,6 +33,10 @@ const Register = () => {
         navigate('/login')
     }
 
+    const handleGoHomepage = () => {
+        navigate('/')
+    }
+
     return (
         <div className="register-container">
             <div className="content-left">
@@ -47,7 +51,7 @@ const Register = () => {
                     <span>Already have an account?</span>
                     <button className='btnLogin' onClick={() => handleGoToLogin()}>Log in</button>
                 </div>
-                <div className='title-name'>
+                <div className='title-name' onClick={() => handleGoHomepage()}>
                     <RiContrastDropFill /> Test Exercises
                 </div>
                 <div className='description-singup'>
@@ -68,7 +72,7 @@ const Register = () => {
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password <span style={{ color: 'red' }}>(*)</span></Form.Label>
                             <Form.Control
-                                type={showPassword ? "password" : "text"}
+                                type={showPassword ? "text" : "password"}
                                 placeholder="Password"
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}

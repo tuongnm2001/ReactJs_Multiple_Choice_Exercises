@@ -12,6 +12,10 @@ const Header = () => {
         navigate('/login')
     }
 
+    const handleSignUp = () => {
+        navigate('/register')
+    }
+
     return (
         <Navbar expand="lg" bg='light'>
             <Container>
@@ -27,7 +31,7 @@ const Header = () => {
                     <Nav>
                         <div className="d-grid gap-2 d-md-block">
                             <button className='btn btn-login' onClick={() => handleLogin()}>Login</button>
-                            <button className='btn btn-dark'>Sign up</button>
+                            <button className='btn btn-dark' onClick={() => handleSignUp()}>Sign up</button>
                         </div>
                         {/* <NavDropdown title="Settings" id="basic-nav-dropdown">
                             <NavDropdown.Item>Login</NavDropdown.Item>
