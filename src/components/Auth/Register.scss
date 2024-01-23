@@ -1,0 +1,101 @@
+.register-container {
+    display     : flex;
+    min-height  : 100vh;
+
+    .content-left {
+        // height            : 100vh;
+        background-color  : rgb(25, 25, 25);
+        width             : 45%;
+        display           : flex;
+        flex-direction    : column;
+
+        .text-signup {
+            color        : rgb(255, 255, 255);
+            font-size    : 36px;
+            margin       : 100px auto;
+            width        : 366px;
+            font-weight  : 400;
+            line-height  : 44px;
+            text-align   : center;
+        }
+
+
+        img {
+            position  : absolute;
+            top       : 230px;
+            left      : 100px;
+            width     : 25%;
+        }
+    }
+
+    .content-right {
+        background-color  : white;
+        border-radius     : 16px 0px 0px 16px;
+        margin-left       : -16px;
+        width             : 55%;
+        padding-top       : 10px;
+        padding-right     : 10px;
+
+        .header-signup {
+            text-align  : right;
+            color       : rgb(61, 61, 60);
+
+            .btnLogin {
+                color             : #191919;
+                border-radius     : 4px;
+                margin-left       : 8px;
+                font-size         : 14px;
+                background-color  : transparent;
+                border            : 1px solid #191919;
+                padding           : 3px 10px;
+                font-weight       : 500;
+            }
+        }
+
+        .title-name {
+            display          : flex;
+            justify-content  : center;
+            color            : #191919;
+            font-size        : 28px;
+            font-weight      : 500;
+            margin-top       : 40px;
+
+        }
+
+        .description-singup {
+            color          : #5e5e5e;
+            margin-left    : 90px;
+            margin-right   : 90px;
+            font-weight    : 200;
+            font-size      : 24px;
+            color          : rgb(94, 94, 94);
+            text-align     : center;
+            margin-top     : 20px;
+            margin-bottom  : 20px;
+        }
+
+        .content-form-register {
+            .eye {
+                width         : fit-content;
+                cursor        : pointer;
+                float         : inline-end;
+                margin-top    : -172px;
+                margin-right  : 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .register-container {
+        .content-left {
+            display  : none;
+        }
+
+        .content-right {
+            margin-left    : 0;
+            width          : 100%;
+            border-radius  : 16px;
+        }
+    }
+}
