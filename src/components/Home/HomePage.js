@@ -1,6 +1,7 @@
 import videoHomePage from "../../assest/video-homepage.mp4"
 
 const HomePage = () => {
+
     return (
         <div className="homepage-container">
             <video autoPlay loop muted>
