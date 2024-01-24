@@ -1,8 +1,24 @@
 .login-container {
     .header {
-        height      : 45px;
         text-align  : right;
         padding     : 8px 24px;
+
+        .goHome {
+            border           : 1px solid gray;
+            float            : left;
+            font-size        : 20px;
+            border-radius    : 50%;
+            width            : 36px;
+            height           : 36px;
+            display          : flex;
+            justify-content  : center;
+            align-items      : center;
+            cursor           : pointer;
+
+            &:hover {
+                opacity  : 0.8;
+            }
+        }
 
         .dhay {
             font-size      : 14px;
@@ -20,6 +36,7 @@
         }
     }
 
+
     .title-login {
         text-align   : center;
         font-size    : 24px;
@@ -28,8 +45,6 @@
         cursor       : pointer;
 
     }
-
-
 
     .content-form {
         margin-top      : 30px;
@@ -60,22 +75,15 @@
             cursor           : pointer;
         }
 
-        button {
-            border-radius  : 4px;
-            font-size      : 16px;
-            height         : 40px;
-            border         : none;
-            color          : #fff;
-            background     : #262627;
-            width          : 100%;
+        button:disabled {
+            cursor  : no-drop;
         }
 
         .eyeLogin {
-            margin-right  : 10px;
-            margin-top    : -128px;
-            margin-left   : 90%;
-            width         : fit-content;
-            cursor        : pointer;
+            margin-top   : -40%;
+            margin-left  : 90%;
+            width        : fit-content;
+            cursor       : pointer;
         }
     }
 }
