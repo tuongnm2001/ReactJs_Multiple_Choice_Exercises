@@ -21,7 +21,7 @@ const Header = () => {
     }
 
     return (
-        <Navbar expand="lg" bg='light'>
+        <Navbar expand="lg" bg='transparent' >
             <Container>
                 <NavLink to="/" className='navbar-brand'>Test Exercises</NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
