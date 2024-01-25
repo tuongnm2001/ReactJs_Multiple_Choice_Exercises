@@ -16,11 +16,11 @@ const ModalDeleteUser = (props) => {
     const handleDeleteUser = async () => {
         let res = await deleteUser(dataDeleteUser.id);
         if (res && res.EC === 0) {
+            handleClose()
             toast.success(res.EM)
             // fetAllUser()
             setCurrentPage(1)
             await fetAllUserWithPaginate(1)
-            handleClose()
         } else {
             toast.error(res.EM)
         }

@@ -19,10 +19,6 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
-    const handleGoBackHome = () => {
-        navigate('/')
-    }
-
     const handleSubmitLogin = async () => {
         setIsLoading(true)
         let data = await postLoginUser(email, password);
@@ -40,19 +36,15 @@ const Login = () => {
         }
     }
 
-    const handleSignUp = () => {
-
-    }
-
     return (
         <div className='login-container'>
             <div className='header'>
-                <span className='goHome'><IoHome onClick={() => handleGoBackHome()} /></span>
+                <span className='goHome'><IoHome onClick={() => navigate('/')} /></span>
                 <span className='dhay'>Don't have an account yet?</span>
-                <button className='btnSignup' onClick={() => handleSignUp()}>Sign up</button>
+                <button className='btnSignup' onClick={() => navigate('/register')}>Sign up</button>
             </div>
 
-            <div className='title-login col-4 mx-auto' onClick={() => handleGoBackHome()}>
+            <div className='title-login col-4 mx-auto' onClick={() => navigate('/')}>
                 <RiContrastDropFill /> Test Exercises
             </div>
             <div className='content-form col-4 mx-auto'>
