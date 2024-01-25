@@ -19,7 +19,7 @@ const Header = () => {
     const handleSignUp = () => {
         navigate('/register')
     }
-    console.log(account.username);
+
     return (
         <Navbar expand="lg" bg='transparent' >
             <Container>
