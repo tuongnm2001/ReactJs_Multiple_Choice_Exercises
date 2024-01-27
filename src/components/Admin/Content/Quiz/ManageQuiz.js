@@ -52,12 +52,12 @@ const ManageQuiz = () => {
             </div>
 
             <Tabs
-                defaultActiveKey="profile"
+                defaultActiveKey="add-new-quiz"
                 id="justify-tab-example"
                 className="mb-3"
                 justify
             >
-                <Tab eventKey="home" title="Add New Quiz">
+                <Tab eventKey="add-new-quiz" title="Add New Quiz">
                     <div className="add-new">
                         <fieldset className='border rounded-3 p-3'>
                             <div className="form-floating mb-3">
@@ -121,7 +121,8 @@ const ManageQuiz = () => {
                         </fieldset>
                     </div>
 
-                    <div className="list-detail my-5">
+                    <div className="list-detail my-3">
+                        <span className='title-listQuizzes'> List Quizzes</span>
                         <TableQuiz />
                     </div>
                 </Tab>
