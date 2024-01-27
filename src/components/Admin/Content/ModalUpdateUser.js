@@ -142,7 +142,7 @@ const ModalUpdateUser = (props) => {
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={() => handleSubmitUpdateUser()}>
+                    <Button variant="warning" onClick={() => handleSubmitUpdateUser()}>
                         <BsArrowRepeat /> Update
                     </Button>
 
