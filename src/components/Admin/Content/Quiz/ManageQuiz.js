@@ -2,13 +2,15 @@ import './ManageQuiz.scss'
 import Select from 'react-select';
 import { MdOutlineFileUpload } from "react-icons/md";
 import { useState } from 'react';
+import { postCreateNewQuiz } from '../../../../services/apiService';
+import { toast } from 'react-toastify';
 
 const ManageQuiz = () => {
 
     const options = [
-        { value: 'EASY', label: 'Chocolate' },
-        { value: 'MIDIUM', label: 'Strawberry' },
-        { value: 'HARD', label: 'Vanilla' }
+        { value: 'EASY', label: 'EASY' },
+        { value: 'MIDIUM', label: 'MIDIUM' },
+        { value: 'HARD', label: 'HARD' }
     ]
 
     const [name, setName] = useState('')
@@ -18,11 +20,25 @@ const ManageQuiz = () => {
     const [previewImageQuiz, setPreviewImageQuiz] = useState('')
 
     const handleUploadImageQuiz = (event) => {
+        setImageQuiz(event.target.files[0])
         setPreviewImageQuiz(URL.createObjectURL(event.target.files[0]));
     }
 
-    const handleChangeFile = (event) => {
-
+    const handleSubmitAddNewQuiz = async () => {
+        if (!name || !description) {
+            toast.error('Name/Description is required!');
+            return;
+        }
+        let res = await postCreateNewQuiz(name, description, level?.value, imageQuiz);
+        if (res && res.EC === 0) {
+            toast.success(res.EM)
+            setName('')
+            setDescription('')
+            setLevel('')
+            setPreviewImageQuiz('')
+        } else {
+            toast.error(res.EM)
+        }
     }
 
     return (
@@ -58,8 +74,9 @@ const ManageQuiz = () => {
                     <div className='my-3'>
                         <Select
                             options={options}
-                            value={level}
-                            onChange={(event) => handleChangeFile(event)}
+                            defaultValue={level}
+                            onChange={setLevel}
+                        // onChange={(event) => handleChangeSelect(event)}
                         />
                     </div>
 
@@ -84,6 +101,14 @@ const ManageQuiz = () => {
                         }
                     </div>
 
+                    <div>
+                        <button
+                            className='btn btn-warning mt-3'
+                            onClick={() => handleSubmitAddNewQuiz()}
+                        >
+                            Save
+                        </button>
+                    </div>
                 </fieldset>
             </div>
 
