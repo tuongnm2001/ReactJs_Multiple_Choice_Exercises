@@ -1,13 +1,14 @@
 import './ManageQuiz.scss'
 import Select from 'react-select';
 import { MdOutlineFileUpload } from "react-icons/md";
-import { useState } from 'react';
-import { postCreateNewQuiz } from '../../../../services/apiService';
+import { useState, useEffect } from 'react';
+import { postCreateNewQuiz, getAllQuizForAdmin } from '../../../../services/apiService';
 import { toast } from 'react-toastify';
 import TableQuiz from './TableQuiz';
 import { IoSaveOutline } from "react-icons/io5";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+
 
 const ManageQuiz = () => {
 
@@ -22,6 +23,16 @@ const ManageQuiz = () => {
     const [level, setLevel] = useState('EASY')
     const [imageQuiz, setImageQuiz] = useState('')
     const [previewImageQuiz, setPreviewImageQuiz] = useState('')
+    const [listQuiz, setListQuiz] = useState([]);
+
+    useEffect(() => {
+        fetchAllQuiz();
+    }, []);
+
+    const fetchAllQuiz = async () => {
+        let res = await getAllQuizForAdmin();
+        setListQuiz(res.DT)
+    }
 
     const handleUploadImageQuiz = (event) => {
         setImageQuiz(event.target.files[0])
@@ -40,6 +51,7 @@ const ManageQuiz = () => {
             setDescription('')
             setLevel('')
             setPreviewImageQuiz('')
+            fetchAllQuiz()
         } else {
             toast.error(res.EM)
         }
@@ -83,7 +95,7 @@ const ManageQuiz = () => {
 
                             <div className='my-3'>
                                 <Select
-                                    options={options}
+                                    options={options || ''}
                                     defaultValue={level}
                                     onChange={setLevel}
                                 />
@@ -123,7 +135,10 @@ const ManageQuiz = () => {
 
                     <div className="list-detail my-3">
                         <span className='title-listQuizzes'> List Quizzes</span>
-                        <TableQuiz />
+                        <TableQuiz
+                            listQuiz={listQuiz}
+                            fetchAllQuiz={fetchAllQuiz}
+                        />
                     </div>
                 </Tab>
 
