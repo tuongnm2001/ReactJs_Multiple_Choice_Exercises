@@ -142,11 +142,12 @@ const ModalUpdateUser = (props) => {
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        <IoClose /> Close
-                    </Button>
                     <Button variant="primary" onClick={() => handleSubmitUpdateUser()}>
                         <BsArrowRepeat /> Update
+                    </Button>
+
+                    <Button variant="secondary" onClick={handleClose}>
+                        <IoClose /> Close
                     </Button>
                 </Modal.Footer>
             </Modal>

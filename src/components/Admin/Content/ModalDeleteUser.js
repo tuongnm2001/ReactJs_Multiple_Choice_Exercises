@@ -41,13 +41,14 @@ const ModalDeleteUser = (props) => {
                     Are you sure you want to delete the<span style={{ color: 'red' }}> {dataDeleteUser.email}</span> user?
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        <IoClose /> Close
-                    </Button>
                     <Button variant="danger"
                         onClick={() => handleDeleteUser()}
                     >
                         <RiDeleteBin5Line /> Delete
+                    </Button>
+
+                    <Button variant="secondary" onClick={handleClose}>
+                        <IoClose /> Close
                     </Button>
                 </Modal.Footer>
             </Modal>

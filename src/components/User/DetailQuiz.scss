@@ -4,27 +4,46 @@
     padding  : 50px;
 
     .content-left {
-        width   : 70%;
-        border  : 1px solid red;
+        width          : 70%;
+        border         : 2px solid #ccc;
+        padding        : 20px;
+        border-radius  : 5px;
 
         .title {
             font-size    : 30px;
             font-weight  : 600;
         }
 
+        hr {
+            margin-bottom  : 30px;
+        }
 
         .q-content {
             .question {
-                font-size    : 20px;
-                font-weight  : 600;
+                font-size      : 20px;
+                font-weight    : 600;
+                margin-top     : 25px;
+                margin-left    : 30px;
+                margin-bottom  : 10px;
             }
 
+            .answer {
+                margin-left  : 30px;
+            }
 
             .q-image {
+                text-align  : center;
+
                 img {
-                    width   : 300px;
-                    height  : 200px;
+                    width       : 250px;
+                    height      : 150px;
+                    object-fit  : contain;
                 }
+            }
+
+            .no-image {
+                width   : 250px;
+                height  : 150px;
             }
         }
 
@@ -32,12 +51,15 @@
             display          : flex;
             gap              : 15px;
             justify-content  : center;
+            margin-top       : 45px;
+            flex-wrap        : wrap;
         }
 
     }
 
     .content-right {
-        width   : 30%;
-        border  : 1px solid blue;
+        width          : 30%;
+        border         : 2px solid #ccc;
+        border-radius  : 5px;
     }
 }

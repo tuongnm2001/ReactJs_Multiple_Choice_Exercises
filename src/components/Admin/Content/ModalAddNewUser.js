@@ -155,11 +155,12 @@ const ModalAddNewUser = (props) => {
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        <IoClose /> Close
-                    </Button>
                     <Button variant="primary" onClick={() => handleSubmitAddUser()}>
                         <IoSaveOutline /> Save
+                    </Button>
+
+                    <Button variant="secondary" onClick={handleClose}>
+                        <IoClose /> Close
                     </Button>
                 </Modal.Footer>
             </Modal>
