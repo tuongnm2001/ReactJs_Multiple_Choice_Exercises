@@ -11,10 +11,11 @@ import {
 import { AiTwotoneStar } from "react-icons/ai";
 import { MdDashboardCustomize, MdOutlineManageAccounts } from "react-icons/md";
 
-import { DiReact, FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 import sidebarBg from '../../assest/bg2.jpg';
 import './SideBar.scss'
 import { Link, useNavigate } from 'react-router-dom';
+import { RiContrastDropFill } from "react-icons/ri";
 
 const SideBar = (props) => {
 
@@ -47,7 +48,7 @@ const SideBar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        <AiTwotoneStar size={'2rem'} color={"00bfff"} />
+                        <RiContrastDropFill size={'2rem'} color={"00bfff"} />
                         <span>Test Exerciese</span>
                     </div>
                 </SidebarHeader>
@@ -70,7 +71,11 @@ const SideBar = (props) => {
                                 Quản lí Users
                                 <Link to={'/admin/manage-user'} />
                             </MenuItem>
-                            <MenuItem>Quản lí bài Quiz</MenuItem>
+                            <MenuItem>
+                                Quản lí bài Quiz
+                                <Link to={'/admin/manage-quizzes'} />
+                            </MenuItem>
+
                             <MenuItem>Quản lí câu hỏi</MenuItem>
                         </SubMenu>
                     </Menu>
