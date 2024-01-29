@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { deleteQuiz } from '../../../../services/apiService';
 import { toast } from 'react-toastify';
+import { IoClose } from "react-icons/io5";
 
 const ModalDeleteQuiz = (props) => {
 
@@ -42,7 +43,7 @@ const ModalDeleteQuiz = (props) => {
                 </Button>
 
                 <Button variant="secondary" onClick={handleClose}>
-                    Close
+                    <IoClose /> Close
                 </Button>
             </Modal.Footer>
         </Modal >

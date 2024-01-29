@@ -51,7 +51,7 @@ const ModalUpdateUser = (props) => {
                                 type="email"
                                 className="form-control"
                                 value={email}
-                                onChange={(event) => setEmail(event.target.value)}
+
                             />
                         </div>
 
@@ -62,7 +62,6 @@ const ModalUpdateUser = (props) => {
                                 type="password"
                                 className="form-control"
                                 value={'********'}
-                                onChange={(event) => setPassword(event.target.value)}
                             />
                         </div>
 
@@ -73,7 +72,6 @@ const ModalUpdateUser = (props) => {
                                 type="text"
                                 className="form-control"
                                 value={username}
-                                onChange={(event) => setUsername(event.target.value)}
                             />
                         </div>
 
@@ -83,7 +81,6 @@ const ModalUpdateUser = (props) => {
                                 disabled
                                 value={role}
                                 className="form-select"
-                                onChange={(event) => setRole(event.target.value)}
                             >
                                 <option value="USER">USER</option>
                                 <option value="ADMIN">ADMIN</option>

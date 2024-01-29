@@ -3,21 +3,33 @@ import { getAllQuizForAdmin } from "../../../../services/apiService";
 import { FaUserEdit } from "react-icons/fa";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import ModalDeleteQuiz from "./ModalDeleteQuiz";
+import ModalEditQuiz from "./ModalEditQuiz";
+import { FaEye } from "react-icons/fa";
+import ModalViewQuiz from "./ModalViewQuiz";
 
 const TableQuiz = (props) => {
 
     const { fetchAllQuiz } = props;
     const [isShowModalDeleteQuiz, setIsShowModalDeleteQuiz] = useState(false)
+    const [isShowModalEditQuiz, setIsShowModalEditQuiz] = useState(false)
+    const [isShowModalViewQuiz, setIsShowModalViewQuiz] = useState(false)
     const [dataDeleteQuiz, setDataDeleteQuiz] = useState([])
+    const [dataUpdateQuiz, setDataUpdateQuiz] = useState([])
+    const [dataViewQuiz, setDataViewQuiz] = useState([])
 
 
-    const handleShowModalDelete = (quiz) => {
-        setDataDeleteQuiz(quiz);
+    const handleShowModalDelete = (dataDelete) => {
         setIsShowModalDeleteQuiz(true)
+        setDataDeleteQuiz(dataDelete);
+    }
+    const handleShowModalEdit = (dataUpdate) => {
+        setIsShowModalEditQuiz(true)
+        setDataUpdateQuiz(dataUpdate)
     }
 
-    const handleShowModalEdit = () => {
-        alert('Edit')
+    const handleShowModalView = (dataView) => {
+        setIsShowModalViewQuiz(true)
+        setDataViewQuiz(dataView)
     }
 
     return (
@@ -44,8 +56,15 @@ const TableQuiz = (props) => {
                                     <td>{item.difficulty}</td>
                                     <td>
                                         <button
+                                            className="btn btn-info"
+                                            onClick={() => handleShowModalView(item)}
+                                        >
+                                            <FaEye /> View
+                                        </button>
+
+                                        <button
                                             className="btn btn-warning mx-3"
-                                            onClick={() => handleShowModalEdit()}
+                                            onClick={() => handleShowModalEdit(item)}
                                         >
                                             <FaUserEdit /> Edit
                                         </button>
@@ -70,6 +89,19 @@ const TableQuiz = (props) => {
                 setShow={setIsShowModalDeleteQuiz}
                 dataDeleteQuiz={dataDeleteQuiz}
                 fetchAllQuiz={fetchAllQuiz}
+            />
+
+            <ModalEditQuiz
+                show={isShowModalEditQuiz}
+                setShow={setIsShowModalEditQuiz}
+                dataUpdateQuiz={dataUpdateQuiz}
+                fetchAllQuiz={fetchAllQuiz}
+            />
+
+            <ModalViewQuiz
+                dataViewQuiz={dataViewQuiz}
+                show={isShowModalViewQuiz}
+                setShow={setIsShowModalViewQuiz}
             />
         </>
     );
