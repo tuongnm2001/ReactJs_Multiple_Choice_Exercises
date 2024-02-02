@@ -68,7 +68,7 @@ const Login = () => {
                         value={password}
                         type={showPassword ? "text" : "password"}
                         className='form-control'
-                        placeholder='At least 8 characters'
+                        placeholder='At least 6 characters'
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </div>

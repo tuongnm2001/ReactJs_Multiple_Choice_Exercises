@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { getAllQuizForAdmin } from "../../../../services/apiService";
 import { FaUserEdit } from "react-icons/fa";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import ModalDeleteQuiz from "./ModalDeleteQuiz";
@@ -16,7 +15,6 @@ const TableQuiz = (props) => {
     const [dataDeleteQuiz, setDataDeleteQuiz] = useState([])
     const [dataUpdateQuiz, setDataUpdateQuiz] = useState([])
     const [dataViewQuiz, setDataViewQuiz] = useState([])
-
 
     const handleShowModalDelete = (dataDelete) => {
         setIsShowModalDeleteQuiz(true)

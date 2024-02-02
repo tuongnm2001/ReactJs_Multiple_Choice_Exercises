@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { postCreateNewUser } from '../../../services/apiService';
 import { IoClose } from "react-icons/io5";
 import { IoSaveOutline } from "react-icons/io5";
+import Lightbox from "react-awesome-lightbox";
 
 const ModalAddNewUser = (props) => {
 
@@ -18,6 +19,7 @@ const ModalAddNewUser = (props) => {
     const [role, setRole] = useState('USER')
     const [image, setImage] = useState('')
     const [previewImg, setPreviewImg] = useState('')
+    const [isPreviewImg, setIsPreviewImg] = useState(false)
 
     const handleClose = () => {
         setShow(false)
@@ -144,7 +146,7 @@ const ModalAddNewUser = (props) => {
                             />
                         </div>
 
-                        <div className='col-md-12 img-preview'>
+                        <div className='col-md-12 img-preview' onClick={() => setIsPreviewImg(true)}>
                             {
                                 previewImg ?
                                     <img src={previewImg} />
@@ -164,6 +166,15 @@ const ModalAddNewUser = (props) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
+            {
+                isPreviewImg === true &&
+                < Lightbox
+                    image={previewImg}
+                    // title={dataImgPreview.title}
+                    onClose={() => setIsPreviewImg(false)}
+                />
+            }
         </>
     );
 }

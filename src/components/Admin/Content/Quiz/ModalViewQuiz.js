@@ -4,7 +4,7 @@ import { IoClose } from "react-icons/io5";
 import Select from 'react-select';
 import { useEffect, useState } from 'react';
 import _ from 'lodash'
-
+import Lightbox from "react-awesome-lightbox";
 
 const ModalViewQuiz = (props) => {
 
@@ -14,6 +14,7 @@ const ModalViewQuiz = (props) => {
     const [level, setLevel] = useState('')
     const [image, setImage] = useState('')
     const [previewImg, setPreviewImg] = useState('')
+    const [isPreviewImg, setIsPreviewImg] = useState(false)
 
 
     useEffect(() => {
@@ -31,57 +32,67 @@ const ModalViewQuiz = (props) => {
     }
 
     return (
-        <Modal
-            show={show}
-            onHide={handleClose}
-            backdrop="static"
-            keyboard={false}
-            size='lg'
-        >
-            <Modal.Header closeButton>
-                <Modal.Title>View Quiz</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <form className='row g-3 content-form-quiz'>
-                    <div className="col-md-6">
-                        <label className="form-label">Name</label>
-                        <input type="email" className="form-control" value={name} readOnly />
-                    </div>
-                    <div className="col-md-6">
-                        <label className="form-label">Description</label>
-                        <textarea type="text" className="form-control" value={description} readOnly />
-                    </div>
+        <>
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+                size='lg'
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>View Quiz</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form className='row g-3 content-form-quiz'>
+                        <div className="col-md-6">
+                            <label className="form-label">Name</label>
+                            <input type="email" className="form-control" value={name} readOnly />
+                        </div>
+                        <div className="col-md-6">
+                            <label className="form-label">Description</label>
+                            <textarea type="text" className="form-control" value={description} readOnly />
+                        </div>
 
-                    <div className='col-md-6'>
-                        <label className="form-label">Level</label>
+                        <div className='col-md-6'>
+                            <label className="form-label">Level</label>
 
-                        <Select
-                            isClearable={false}
-                            value={{ label: level }}
-                            isDisabled
-                        />
-                    </div>
+                            <Select
+                                isClearable={false}
+                                value={{ label: level }}
+                                isDisabled
+                            />
+                        </div>
 
-                    <div className="col-md-12">
+                        <div className="col-md-12">
 
-                    </div>
+                        </div>
 
-                    <div className='col-md-12 imgQuiz-preview'>
-                        {
-                            previewImg ?
-                                <img src={previewImg} />
-                                :
-                                <span>Image</span>
-                        }
-                    </div>
-                </form>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    <IoClose /> Close
-                </Button>
-            </Modal.Footer>
-        </Modal >
+                        <div className='col-md-12 imgQuiz-preview' onClick={() => setIsPreviewImg(true)}>
+                            {
+                                previewImg ?
+                                    <img src={previewImg} />
+                                    :
+                                    <span>Image</span>
+                            }
+                        </div>
+                    </form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        <IoClose /> Close
+                    </Button>
+                </Modal.Footer>
+            </Modal >
+            {
+                isPreviewImg === true &&
+                < Lightbox
+                    image={previewImg}
+                    // title={dataImgPreview.title}
+                    onClose={() => setIsPreviewImg(false)}
+                />
+            }
+        </>
     );
 }
 

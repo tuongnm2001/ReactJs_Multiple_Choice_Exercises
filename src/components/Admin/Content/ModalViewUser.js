@@ -4,6 +4,7 @@ import './ModalUpdateUser.scss'
 import { IoClose } from "react-icons/io5";
 import { useEffect, useState } from 'react';
 import _ from 'lodash'
+import Lightbox from "react-awesome-lightbox";
 
 const ModalUpdateUser = (props) => {
 
@@ -15,6 +16,7 @@ const ModalUpdateUser = (props) => {
     const [role, setRole] = useState('USER')
     const [image, setImage] = useState('')
     const [previewImg, setPreviewImg] = useState('')
+    const [isPreviewImg, setIsPreviewImg] = useState(false)
 
     useEffect(() => {
         if (!_.isEmpty(dataViewUser)) {
@@ -91,7 +93,7 @@ const ModalUpdateUser = (props) => {
 
                         </div>
 
-                        <div className='col-md-12 img-preview'>
+                        <div className='col-md-12 img-preview' onClick={() => setIsPreviewImg(true)}>
                             {
                                 previewImg ?
                                     <img src={previewImg} />
@@ -107,6 +109,15 @@ const ModalUpdateUser = (props) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
+            {
+                isPreviewImg === true &&
+                < Lightbox
+                    image={previewImg}
+                    // title={dataImgPreview.title}
+                    onClose={() => setIsPreviewImg(false)}
+                />
+            }
         </>
     );
 }

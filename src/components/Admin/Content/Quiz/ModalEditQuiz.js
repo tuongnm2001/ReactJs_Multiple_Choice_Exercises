@@ -9,7 +9,7 @@ import './ModalEditQuiz.scss'
 import _ from 'lodash'
 import { putUpdateNewQuiz } from '../../../../services/apiService';
 import { toast } from 'react-toastify';
-
+import Lightbox from "react-awesome-lightbox";
 
 const ModalEditQuiz = (props) => {
 
@@ -19,7 +19,7 @@ const ModalEditQuiz = (props) => {
     const [level, setLevel] = useState('')
     const [image, setImage] = useState('')
     const [previewImg, setPreviewImg] = useState('')
-
+    const [isPreviewImg, setIsPreviewImg] = useState(false)
 
     useEffect(() => {
         if (!_.isEmpty(dataUpdateQuiz)) {
@@ -61,74 +61,85 @@ const ModalEditQuiz = (props) => {
         setLevel(selectedOption.value);
     }
     return (
-        <Modal
-            show={show}
-            onHide={handleClose}
-            backdrop="static"
-            keyboard={false}
-            size='lg'
-        >
-            <Modal.Header closeButton>
-                <Modal.Title>Update Quiz</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <form className='row g-3 content-form-quiz'>
-                    <div className="col-md-6">
-                        <label className="form-label">Name</label>
-                        <input type="email" className="form-control" value={name} onChange={(event) => setName(event.target.value)} />
-                    </div>
-                    <div className="col-md-6">
-                        <label className="form-label">Description</label>
-                        <textarea type="text" className="form-control" value={description} onChange={(event) => setDescription(event.target.value)} />
-                    </div>
+        <>
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+                size='lg'
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Update Quiz</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form className='row g-3 content-form-quiz'>
+                        <div className="col-md-6">
+                            <label className="form-label">Name</label>
+                            <input type="email" className="form-control" value={name} onChange={(event) => setName(event.target.value)} />
+                        </div>
+                        <div className="col-md-6">
+                            <label className="form-label">Description</label>
+                            <textarea type="text" className="form-control" value={description} onChange={(event) => setDescription(event.target.value)} />
+                        </div>
 
-                    <div className='col-md-6'>
-                        <label className="form-label">Level</label>
+                        <div className='col-md-6'>
+                            <label className="form-label">Level</label>
 
-                        <Select
-                            isClearable={false}
-                            options={options}
-                            value={{ label: level }}
-                            onChange={handleSelect}
-                        />
-                    </div>
+                            <Select
+                                isClearable={false}
+                                options={options}
+                                value={{ label: level }}
+                                onChange={handleSelect}
+                            />
+                        </div>
 
-                    <div className="col-md-12">
-                        <label className="form-label label-uploadImg" htmlFor='labelUploadImgQuiz'>
-                            <MdOutlineFileUpload /> Upload Image
-                        </label>
-                        <input
-                            type="file"
-                            hidden
-                            className="form-control"
-                            id='labelUploadImgQuiz'
-                            onChange={(event) => handleUploadImage(event)}
-                        />
-                    </div>
+                        <div className="col-md-12">
+                            <label className="form-label label-uploadImg" htmlFor='labelUploadImgQuiz'>
+                                <MdOutlineFileUpload /> Upload Image
+                            </label>
+                            <input
+                                type="file"
+                                hidden
+                                className="form-control"
+                                id='labelUploadImgQuiz'
+                                onChange={(event) => handleUploadImage(event)}
+                            />
+                        </div>
 
-                    <div className='col-md-12 imgQuiz-preview'>
-                        {
-                            previewImg ?
-                                <img src={previewImg} />
-                                :
-                                <span>Image</span>
-                        }
-                    </div>
-                </form>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button
-                    variant="warning"
-                    onClick={() => handleSubmitUpdate()}
-                >
-                    <BsArrowRepeat /> Update
-                </Button>
+                        <div className='col-md-12 imgQuiz-preview' onClick={() => setIsPreviewImg(true)}>
+                            {
+                                previewImg ?
+                                    <img src={previewImg} />
+                                    :
+                                    <span>Image</span>
+                            }
+                        </div>
+                    </form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button
+                        variant="warning"
+                        onClick={() => handleSubmitUpdate()}
+                    >
+                        <BsArrowRepeat /> Update
+                    </Button>
 
-                <Button variant="secondary" onClick={handleClose}>
-                    <IoClose /> Close
-                </Button>
-            </Modal.Footer>
-        </Modal >
+                    <Button variant="secondary" onClick={handleClose}>
+                        <IoClose /> Close
+                    </Button>
+                </Modal.Footer>
+            </Modal >
+
+            {
+                isPreviewImg === true &&
+                < Lightbox
+                    image={previewImg}
+                    // title={dataImgPreview.title}
+                    onClose={() => setIsPreviewImg(false)}
+                />
+            }
+        </>
     );
 }
 

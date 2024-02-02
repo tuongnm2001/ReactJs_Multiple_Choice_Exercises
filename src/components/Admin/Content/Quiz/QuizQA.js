@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
-import './Questions.scss'
+import './QuizQA.scss'
 import { BsFillPatchPlusFill, BsPatchMinusFill } from "react-icons/bs";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { RiImageAddFill } from "react-icons/ri";
@@ -14,7 +14,7 @@ import {
 } from "../../../../services/apiService";
 import { toast } from 'react-toastify';
 
-const Questions = () => {
+const QuizQA = () => {
 
     const initQuestion = [
         {
@@ -39,8 +39,8 @@ const Questions = () => {
         title: '',
         url: ''
     })
-    const [listQuiz, setListQuiz] = useState([])
     const [selectedQuiz, setSelectedQuiz] = useState({})
+    const [listQuiz, setListQuiz] = useState([])
 
     useEffect(() => {
         fetchQuiz()
@@ -209,7 +209,7 @@ const Questions = () => {
                 )
             }
         }
-        toast.success('Create Questions and Answer succced!')
+        toast.success('Create QuizQA and Answer succced!')
         setQuestions(initQuestion)
     }
 
@@ -227,10 +227,6 @@ const Questions = () => {
 
     return (
         <div className="questions-container">
-            <div className="title">
-                Manage Questions
-            </div>
-
             <div className="add-new-question">
                 <div className='col-6 form-group'>
                     <label className='mb-2'>Select Quiz</label>
@@ -248,7 +244,6 @@ const Questions = () => {
                 {
                     questions && questions.length > 0 &&
                     questions.map((item, index) => {
-                        console.log(item);
                         return (
                             <div className='q-main m-4' key={item.id}>
                                 <div className='question-content'>
@@ -369,4 +364,4 @@ const Questions = () => {
     );
 }
 
-export default Questions;
+export default QuizQA;
