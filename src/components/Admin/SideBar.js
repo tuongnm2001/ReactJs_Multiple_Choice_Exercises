@@ -8,7 +8,6 @@ import {
     SidebarFooter,
     SidebarContent,
 } from 'react-pro-sidebar';
-import { AiTwotoneStar } from "react-icons/ai";
 import { MdDashboardCustomize, MdOutlineManageAccounts } from "react-icons/md";
 
 import { FaGithub } from 'react-icons/fa';
@@ -19,7 +18,7 @@ import { RiContrastDropFill } from "react-icons/ri";
 
 const SideBar = (props) => {
 
-    const { image, collapsed, toggled, handleToggleSidebar } = props;
+    const { collapsed, toggled, handleToggleSidebar } = props;
     const navigate = useNavigate()
 
     const handleGoHome = () => {
@@ -56,6 +55,7 @@ const SideBar = (props) => {
                 <SidebarContent>
                     <Menu iconShape="circle">
                         <MenuItem
+                            active={window.location.pathname === "/admin"}
                             icon={<MdDashboardCustomize />}
                         >
                             Dashboard
@@ -67,16 +67,17 @@ const SideBar = (props) => {
                             icon={<MdOutlineManageAccounts />}
                             title="Managers"
                         >
-                            <MenuItem>
+                            <MenuItem active={window.location.pathname === "/admin/manage-user"}>
                                 Quản lí Users
                                 <Link to={'/admin/manage-user'} />
                             </MenuItem>
-                            <MenuItem>
+
+                            <MenuItem active={window.location.pathname === "/admin/manage-quizzes"}>
                                 Quản lí bài Quiz
                                 <Link to={'/admin/manage-quizzes'} />
                             </MenuItem>
 
-                            <MenuItem>
+                            <MenuItem active={window.location.pathname === "/admin/manage-questions"}>
                                 Quản lí câu hỏi
                                 <Link to={'/admin/manage-questions'} />
                             </MenuItem>

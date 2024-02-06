@@ -12,6 +12,7 @@ import {
     postCreateNewAnswerForQuestion,
     postCreateNewQuestionForQuiz
 } from "../../../../services/apiService";
+import { IoSaveOutline } from "react-icons/io5";
 import { toast } from 'react-toastify';
 
 const Questions = () => {
@@ -248,7 +249,6 @@ const Questions = () => {
                 {
                     questions && questions.length > 0 &&
                     questions.map((item, index) => {
-                        console.log(item);
                         return (
                             <div className='q-main m-4' key={item.id}>
                                 <div className='question-content'>
@@ -350,7 +350,7 @@ const Questions = () => {
                             className='btn btn-warning'
                             onClick={() => handleSubmitQuestionForQuiz()}
                         >
-                            Save Question
+                            <IoSaveOutline /> Save Question
                         </button>
                     </div>
                 }

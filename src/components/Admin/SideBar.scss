@@ -42,3 +42,11 @@
     margin-right  : 12px;
     color         : #eb5656;
 }
+
+.pro-sidebar .pro-menu .pro-menu-item.active {
+    color  : #00bfff;
+}
+
+.pro-sidebar .pro-menu .pro-menu-item>.pro-inner-item:hover {
+    // color  : #00bfff;
+}
