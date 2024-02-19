@@ -25,6 +25,7 @@ const ListQuiz = (props) => {
             {
                 listQuiz && listQuiz.length > 0 &&
                 listQuiz.map((item, index) => {
+                    console.log(item);
                     return (
                         <div className="card" style={{ width: '16rem' }} key={`quiz-${index}`}>
                             <div className="image">

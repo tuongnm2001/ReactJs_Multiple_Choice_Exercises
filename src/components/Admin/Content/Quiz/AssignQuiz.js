@@ -18,11 +18,12 @@ const AssignQuiz = () => {
 
     const fetchQuiz = async () => {
         let res = await getAllQuizForAdmin();
+        console.log('check res : ', res);
         if (res && res.EC === 0) {
-            let newQuiz = res.DT.map(item => {
+            let newQuiz = res.DT.map((item, index) => {
                 return {
                     value: item.id,
-                    label: `${item.id} - ${item.name}`
+                    label: `${item.id} - ${item.description}`
                 }
             })
             setListQuiz(newQuiz)
