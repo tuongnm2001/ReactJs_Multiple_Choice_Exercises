@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import _, { forEach } from 'lodash';
 import './DetailQuiz.scss'
 import ModalResult from "./ModalResult";
+import RightContent from "./Content/RightContent";
 
 const DetailQuiz = () => {
 
@@ -144,7 +145,10 @@ const DetailQuiz = () => {
             </div>
 
             <div className="content-right">
-                Count Down
+                <RightContent
+                    dataQuiz={dataQuiz}
+                    handleFinish={handleFinish}
+                />
             </div>
 
             <ModalResult
