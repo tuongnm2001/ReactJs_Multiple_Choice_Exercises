@@ -20,7 +20,7 @@ const CountDown = (props) => {
         <div className="countdown-container time">
             <CountdownCircleTimer
                 isPlaying
-                duration={60}
+                duration={600}
                 colors={['#1fa81e', '#F7B801', '#A30000', '#A30000']}
                 colorsTime={[7, 5, 2, 0]}
                 onComplete={() => {

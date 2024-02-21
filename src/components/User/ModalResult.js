@@ -11,8 +11,6 @@ const ModalResult = (props) => {
         setShow(false);
     }
 
-    console.log(dataModalResult);
-
     return (
         <>
             <Modal
