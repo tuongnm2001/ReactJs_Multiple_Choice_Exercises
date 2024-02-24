@@ -1,0 +1,35 @@
+{
+    "homepage": {
+        "title1": "Có một cách tốt hơn để hỏi",
+        "title2": "Bạn không muốn tạo ra một cái nhìn nhàm chán. Và khán giả của bạn sẽ không phản hồi với một. Thay vào đó, hãy tạo một typefrom - và làm cho mọi người hài lòng.",
+        "btnHomepageLoggedIn": "Hãy bắt đầu nó miễn phí",
+        "notLoggedInYet": "Bắt đầu ngay"
+    },
+    "header": {
+        "home": "Trang chủ",
+        "user": "Người dùng",
+        "admin": "Quản trị",
+        "setting": "Cài đặt",
+        "profile": "Hồ sơ",
+        "logout": "Đăng xuất"
+    },
+    "login": {
+        "dhay": "Bạn chưa có tài khoản?",
+        "btnSignup": "Đăng kí",
+        "welcome": "Xin chào , đây là ai?",
+        "passwordLogin": "Mật khẩu",
+        "placehoderPass": "Nhập ít nhất 6 kí tự",
+        "forgotPassword": "Quên mật khẩu",
+        "btnLogin": "Đăng nhập"
+    },
+    "register": {
+        "ahaa": "Đã có tài khoản?",
+        "btnLogin": "Đăng nhập",
+        "titleRegister": "Nhận dữ liệu tốt hơn với các biểu mẫu đàm thoại, khảo sát, câu hỏi,...",
+        "passwordRegister": "Mật khẩu",
+        "userRegister": "Tên tài khoản",
+        "cmfa": "Tạo tài khoản miễn phí",
+        "title1": "Đăng kí",
+        "title2": "và bắt đầu"
+    }
+}

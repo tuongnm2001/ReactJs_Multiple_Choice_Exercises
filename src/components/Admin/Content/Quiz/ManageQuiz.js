@@ -146,12 +146,12 @@ const ManageQuiz = () => {
                         </div>
                     </Tab>
 
-                    <Tab eventKey="update-qa-quizzes" title="Update Q/A Quizzes">
-                        <QuizQA />
-                    </Tab>
-
                     <Tab eventKey="assign-to-user" title="Assign to User">
                         <AssignQuiz />
+                    </Tab>
+
+                    <Tab eventKey="update-qa-quizzes" title="Update Q/A Quizzes">
+                        <QuizQA />
                     </Tab>
                 </Tabs>
 

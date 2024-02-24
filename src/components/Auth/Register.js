@@ -8,6 +8,8 @@ import { useState } from 'react';
 import { postRegisterUser } from '../../services/apiService';
 import { toast } from 'react-toastify';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import Language from '../Header/Language';
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
 
@@ -16,6 +18,7 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
     const [showPassword, setShowPassword] = useState(false)
+    const { t } = useTranslation();
 
     const handleSubmitRegister = async () => {
         let data = await postRegisterUser(email, username, password)
@@ -41,26 +44,29 @@ const Register = () => {
         <div className="register-container">
             <div className="content-left">
                 <div className='text-signup'>
-                    Sign up <br /> and come on in</div>
+                    {t('register.title1')} <br /> {t('register.title2')}</div>
                 <div className='imgSingup'>
                     <img src={imgSingup} />
                 </div>
             </div>
             <div className="content-right">
                 <div className='header-signup'>
-                    <span>Already have an account?</span>
-                    <button className='btnLogin' onClick={() => handleGoToLogin()}>Log in</button>
+                    <span>{t('register.ahaa')}</span>
+                    <button className='btnLogin' onClick={() => handleGoToLogin()}>{t('register.btnLogin')}</button>
+                    <div className='language-register'><Language /></div>
                 </div>
+
                 <div className='title-name' onClick={() => handleGoHomepage()}>
                     <RiContrastDropFill /> Test Exercises
                 </div>
+
                 <div className='description-singup'>
-                    <span>Get better data with conversational forms, surveys, quizzes & more.</span>
+                    <span>{t('register.titleRegister')}</span>
                 </div>
                 <div className='content-form-register col-7 mx-auto'>
                     <Form>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Email address <span style={{ color: 'red' }}>(*)</span></Form.Label>
+                            <Form.Label>Email <span style={{ color: 'red' }}>(*)</span></Form.Label>
                             <Form.Control
                                 type="email"
                                 placeholder="Enter email"
@@ -70,10 +76,10 @@ const Register = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Password <span style={{ color: 'red' }}>(*)</span></Form.Label>
+                            <Form.Label>{t('register.passwordRegister')} <span style={{ color: 'red' }}>(*)</span></Form.Label>
                             <Form.Control
                                 type={showPassword ? "text" : "password"}
-                                placeholder="Password"
+                                placeholder={t('register.passwordRegister')}
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}
                             />
@@ -81,10 +87,10 @@ const Register = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Username</Form.Label>
+                            <Form.Label>{t('register.userRegister')}</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Username"
+                                placeholder={t('register.userRegister')}
                                 value={username}
                                 onChange={(event) => setUsername(event.target.value)}
                             />
@@ -92,7 +98,7 @@ const Register = () => {
 
                         <div className='d-grid gap-2'>
                             <Button variant="dark" onClick={() => handleSubmitRegister()}>
-                                Create my free account
+                                {t('register.cmfa')}
                             </Button>
                         </div>
 

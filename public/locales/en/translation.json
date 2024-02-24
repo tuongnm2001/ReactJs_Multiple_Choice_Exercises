@@ -1,0 +1,35 @@
+{
+    "homepage": {
+        "title1": "There's a better way to ask",
+        "title2": "You don't want to create a boring look. And your audience won't respond to one. Instead, make a typefrom - and make everyone happy.",
+        "btnHomepageLoggedIn": "Get's Started. It's free",
+        "notLoggedInYet": "Start Now"
+    },
+    "header": {
+        "home": "Home",
+        "user": "User",
+        "admin": "Admin",
+        "setting": "Setting",
+        "profile": "Profile",
+        "logout": "Logout"
+    },
+    "login": {
+        "dhay": "Don't have an account yet?",
+        "btnSignup": "Sign up",
+        "welcome": "Hello, who’s this?",
+        "passwordLogin": "Password",
+        "placehoderPass": "At least 6 characters",
+        "forgotPassword": "Forgot password",
+        "btnLogin": "Log in to Test Exercises"
+    },
+    "register": {
+        "ahaa": "Already have an account?",
+        "btnLogin": "Log in",
+        "titleRegister": "Get better data with conversational forms, surveys, quizzes & more.",
+        "passwordRegister": "Password",
+        "userRegister": "Username",
+        "cmfa": "Create my free account",
+        "title1": "Sign up",
+        "title2": "and come on in"
+    }
+}
