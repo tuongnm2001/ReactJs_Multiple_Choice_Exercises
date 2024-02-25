@@ -15,11 +15,13 @@ import sidebarBg from '../../assest/bg2.jpg';
 import './SideBar.scss'
 import { Link, useNavigate } from 'react-router-dom';
 import { RiContrastDropFill } from "react-icons/ri";
+import { useTranslation } from 'react-i18next';
 
 const SideBar = (props) => {
 
     const { collapsed, toggled, handleToggleSidebar } = props;
     const navigate = useNavigate()
+    const { t } = useTranslation();
 
     const handleGoHome = () => {
         navigate('/')
@@ -58,27 +60,27 @@ const SideBar = (props) => {
                             active={window.location.pathname === "/admin"}
                             icon={<MdDashboardCustomize />}
                         >
-                            Dashboard
+                            {t('sidebar.dashboard')}
                             <Link to={'/admin'} />
                         </MenuItem>
                     </Menu>
                     <Menu iconShape='circle'>
                         <SubMenu
                             icon={<MdOutlineManageAccounts />}
-                            title="Managers"
+                            title={t('sidebar.managers')}
                         >
                             <MenuItem active={window.location.pathname === "/admin/manage-user"}>
-                                Quản lí Users
+                                {t('sidebar.managerUser')}
                                 <Link to={'/admin/manage-user'} />
                             </MenuItem>
 
                             <MenuItem active={window.location.pathname === "/admin/manage-quizzes"}>
-                                Quản lí bài Quiz
+                                {t('sidebar.managerQuiz')}
                                 <Link to={'/admin/manage-quizzes'} />
                             </MenuItem>
 
                             <MenuItem active={window.location.pathname === "/admin/manage-questions"}>
-                                Quản lí câu hỏi
+                                {t('sidebar.managerQuestion')}
                                 <Link to={'/admin/manage-questions'} />
                             </MenuItem>
                         </SubMenu>

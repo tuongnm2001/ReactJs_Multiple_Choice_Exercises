@@ -31,5 +31,27 @@
         "cmfa": "Create my free account",
         "title1": "Sign up",
         "title2": "and come on in"
+    },
+    "sidebar": {
+        "dashboard": "Dashboard",
+        "managers": "Manages",
+        "managerUser": "Manage User",
+        "managerQuiz": "Manage Quiz",
+        "managerQuestion": "Manage Question"
+    },
+    "manageUser": {
+        "title": "Manage User",
+        "btn": "Add New User"
+    },
+    "tableUser": {
+        "username": "Username",
+        "role": "Role",
+        "actions": "Actions",
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+    },
+    "admin": {
+        "search": "Search"
     }
 }

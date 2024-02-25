@@ -39,7 +39,7 @@ const Admin = (props) => {
                         <Form className="d-flex">
                             <Form.Control
                                 type="search"
-                                placeholder="Search"
+                                placeholder={t("admin.search")}
                                 className="me-2"
                                 aria-label="Search"
                             />

@@ -31,5 +31,27 @@
         "cmfa": "Tạo tài khoản miễn phí",
         "title1": "Đăng kí",
         "title2": "và bắt đầu"
+    },
+    "sidebar": {
+        "dashboard": "Tổng quan",
+        "managers": "Quản lí",
+        "managerUser": "Quản lí người dùng",
+        "managerQuiz": "Quản lí bài kiểm tra",
+        "managerQuestion": "Quản lí câu hỏi"
+    },
+    "manageUser": {
+        "title": "Quản lí người dùng",
+        "btn": "Thêm mới"
+    },
+    "tableUser": {
+        "username": "Tên người dùng",
+        "role": "Vai trò",
+        "actions": "Hành động",
+        "view": "Xem",
+        "edit": "Sửa",
+        "delete": "Xóa"
+    },
+    "admin": {
+        "search": "Tìm kiếm"
     }
 }
