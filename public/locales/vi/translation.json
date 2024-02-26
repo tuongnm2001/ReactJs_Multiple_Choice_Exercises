@@ -53,5 +53,18 @@
     },
     "admin": {
         "search": "Tìm kiếm"
+    },
+    "dashboard": {
+        "title": "Tổng quan",
+        "subTitle": "Đây là thống kê của hệ thống",
+        "totalUser": "Tổng người dùng",
+        "subTotalUer": "Người dùng",
+        "subTotalAdmin": "Quản trị viên",
+        "totalQuizzes": "Tổng bài kiểm tra",
+        "totalQuestions": "Tổng câu hỏi",
+        "totalAnswers": "Tổng đáp án",
+        "quiz": "Bài kiểm tra",
+        "question": "Câu hỏi",
+        "answers": "Đáp án"
     }
 }

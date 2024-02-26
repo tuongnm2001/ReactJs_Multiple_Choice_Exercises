@@ -9,14 +9,30 @@ import { toast } from 'react-toastify';
 import { doLogout } from '../../redux/action/userAction';
 import { useTranslation } from 'react-i18next';
 import Language from './Language';
+import iconSettings from '../../assest/setting.png'
+import iconProfile from '../../assest/profile.png'
+import iconLogout from '../../assest/logout.png'
+import { useState } from 'react';
+import './Header.scss'
+import ModalProfile from './ModalProfile';
 
 const Header = () => {
 
+    const { t } = useTranslation();
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const account = useSelector(state => state.user.account);
     const isAuthenticated = useSelector(state => state.user.isAuthenticated);
-    const { t } = useTranslation();
+    const [isShowModalProfile, setShowModalProfile] = useState(false);
+
+    const [show, setShow] = useState(false);
+
+    const showDropdown = (e) => {
+        setShow(!show);
+    }
+    const hideDropdown = e => {
+        setShow(false);
+    }
 
     const handleLogin = () => {
         navigate('/login')
@@ -37,48 +53,75 @@ const Header = () => {
         }
     }
 
+    const handleProfile = () => {
+        setShowModalProfile(true)
+    }
+
     return (
-        <Navbar expand="lg" bg='transparent'>
-            <Container>
-                <NavLink to="/" className='navbar-brand'>Test Exercises</NavLink>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <NavLink to="/" className='nav-link'>{t('header.home')}</NavLink>
-                        <NavLink to="/user" className='nav-link'>{t('header.user')}</NavLink>
-                        <NavLink to="/admin" className='nav-link'>{t('header.admin')}</NavLink>
-                    </Nav>
+        <>
+            <Navbar expand="lg" bg='transparent'>
+                <Container>
+                    <NavLink to="/" className='navbar-brand'>Test Exercises</NavLink>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <NavLink to="/" className='nav-link'>{t('header.home')}</NavLink>
+                            <NavLink to="/user" className='nav-link'>{t('header.user')}</NavLink>
+                            <NavLink to="/admin" className='nav-link'>{t('header.admin')}</NavLink>
+                        </Nav>
 
-                    <Nav>
-                        <>
-                            {
-                                isAuthenticated === false ?
-                                    <div className="d-grid gap-2 d-md-block">
-                                        <button className='btn btn-login' onClick={() => handleLogin()}>Login</button>
-                                        <button className='btn btn-dark' onClick={() => handleSignUp()}>Sign up</button>
-                                    </div>
-                                    :
-                                    <NavDropdown title={t("header.setting")}
-                                        id='basic-nav-dropdown'
-                                    >
-                                        <NavDropdown.Item>
-                                            {t("header.profile")}
-                                        </NavDropdown.Item>
-                                        <NavDropdown.Item
-                                            onClick={() => handleLogout()}
-                                        >
-                                            {t("header.logout")}
-                                        </NavDropdown.Item>
-                                    </NavDropdown>
-                            }
+                        <Nav>
+                            <>
+                                {
+                                    isAuthenticated === false ?
+                                        <div className="d-grid gap-2 d-md-block">
+                                            <button className='btn btn-login' onClick={() => handleLogin()}>Login</button>
+                                            <button className='btn btn-dark' onClick={() => handleSignUp()}>Sign up</button>
+                                        </div>
+                                        :
+                                        <>
+                                            <NavDropdown title={
+                                                <div className='profile'>
+                                                    <div className='imageContainer '>
+                                                        <img className='imageHeader' src={`data:image/jpeg;base64,${account.image}`} />
+                                                    </div>
+                                                    {account.email}
+                                                    {/* <img src={iconSettings} style={{ width: '20px' }} /> {t("header.setting")} */}
+                                                </div>
+                                            }
+                                                id='basic-nav-dropdown'
+                                                show={show}
+                                                onMouseEnter={showDropdown}
+                                                onMouseLeave={hideDropdown}
+                                                autoClose
+                                            >
+                                                <NavDropdown.Item
+                                                    onClick={() => handleProfile()}
+                                                >
+                                                    <img src={iconProfile} style={{ width: '20px' }} /> {t("header.profile")}
+                                                </NavDropdown.Item>
+                                                <NavDropdown.Item
+                                                    onClick={() => handleLogout()}
+                                                >
+                                                    <img src={iconLogout} style={{ width: '20px' }} /> {t("header.logout")}
+                                                </NavDropdown.Item>
+                                            </NavDropdown>
+                                        </>
+                                }
 
-                            <Language />
+                                <Language />
 
-                        </>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar >
+                            </>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container >
+            </Navbar >
+
+            <ModalProfile
+                show={isShowModalProfile}
+                setShow={setShowModalProfile}
+            />
+        </>
     );
 }
 

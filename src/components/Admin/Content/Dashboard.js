@@ -6,11 +6,13 @@ import ImgAnswer from '../../../assest/imgAnswer.png'
 import imgQuizz from '../../../assest/imgQuiz.png'
 import { useEffect, useState } from 'react';
 import { getOverview } from '../../../services/apiService';
+import { useTranslation } from 'react-i18next';
 
 const Dashboard = (props) => {
 
     const [dataOverview, setDataOverview] = useState([])
     const [dataChart, setDataChart] = useState([])
+    const { t } = useTranslation();
 
     useEffect(() => {
         fetchOverview()
@@ -27,15 +29,15 @@ const Dashboard = (props) => {
             //process charts data
             const data = [
                 {
-                    "name": "Quizzes",
+                    "name": t('dashboard.quiz'),
                     "Qz": Qz
                 },
                 {
-                    "name": "Questions",
+                    "name": t('dashboard.question'),
                     "Qs": Qs
                 },
                 {
-                    "name": "Answers",
+                    "name": t('dashboard.answers'),
                     "As": As
                 }
             ]
@@ -46,16 +48,16 @@ const Dashboard = (props) => {
     return (
         <div className="dashboard-container">
             <div className='title'>
-                Analytics Dashboard
+                {t('dashboard.title')}
             </div>
 
-            <span className='description'>Here’s what’s going on at your business right now</span>
+            <span className='description'>{t('dashboard.subTitle')}</span>
 
             <div className='content'>
                 <div className='content-left'>
                     <div className='child'>
                         <div className='c-top'>
-                            <span className='text-1'>Total Users</span>
+                            <span className='text-1'>{t('dashboard.totalUser')}</span>
                             <img className='icon' src={ImgUser} />
                         </div>
                         <div className='text-2'>
@@ -70,16 +72,16 @@ const Dashboard = (props) => {
                             <div>
                                 {
                                     dataOverview && dataOverview.users && dataOverview.users.countUsers ?
-                                        <>{dataOverview.users.countUsers} Users</>
+                                        <>{dataOverview.users.countUsers} {t('dashboard.subTotalUer')}</>
                                         :
                                         <>0</>
                                 }
                             </div>
-
+                            <div className='separator'></div>
                             <div>
                                 {
                                     dataOverview && dataOverview.users && dataOverview.users.countAdmin ?
-                                        <>{dataOverview.users.countAdmin} Admin</>
+                                        <>{dataOverview.users.countAdmin} {t('dashboard.subTotalAdmin')}</>
                                         :
                                         <>0</>
                                 }
@@ -89,7 +91,7 @@ const Dashboard = (props) => {
 
                     <div className='child'>
                         <div className='c-top'>
-                            <span className='text-1'>Total Quizzes</span>
+                            <span className='text-1'>{t('dashboard.totalQuizzes')}</span>
                             <img className='icon' src={imgQuizz} />
                         </div>
                         <div className='text-2'>
@@ -105,7 +107,7 @@ const Dashboard = (props) => {
 
                     <div className='child'>
                         <div className='c-top'>
-                            <span className='text-1'>Total Questions</span>
+                            <span className='text-1'>{t('dashboard.totalQuestions')}</span>
                             <img className='icon' src={ImgQuestion} />
                         </div>
 
@@ -121,7 +123,7 @@ const Dashboard = (props) => {
 
                     <div className='child'>
                         <div className='c-top'>
-                            <span className='text-1'>Total Answers</span>
+                            <span className='text-1'>{t('dashboard.totalAnswers')}</span>
                             <img className='icon' src={ImgAnswer} />
                         </div>
                         <div className='text-2'>

@@ -60,12 +60,19 @@
                 }
 
                 .sub-user {
-                    color      : #637381;
-                    font-size  : 15px;
-                    float      : right;
-                    display    : flex;
-                    gap        : 20px;
-                    padding    : 0px 20px;
+                    color         : #637381;
+                    font-size     : 12px;
+                    float         : right;
+                    display       : flex;
+                    gap           : 6px;
+                    margin-right  : 20px;
+
+                    .separator {
+                        width             : 1px;
+                        height            : 12px;
+                        background-color  : #ccc;
+                        margin-top        : 4px;
+                    }
                 }
             }
         }

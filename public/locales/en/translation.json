@@ -9,7 +9,7 @@
         "home": "Home",
         "user": "User",
         "admin": "Admin",
-        "setting": "Setting",
+        "setting": "Settings",
         "profile": "Profile",
         "logout": "Logout"
     },
@@ -53,5 +53,18 @@
     },
     "admin": {
         "search": "Search"
+    },
+    "dashboard": {
+        "title": "Analytics Dashboard",
+        "subTitle": "This is the system statistics",
+        "totalUser": "Total Users",
+        "subTotalUer": "User",
+        "subTotalAdmin": "Admin",
+        "totalQuizzes": "Total Quizzes",
+        "totalQuestions": "Total Questions",
+        "totalAnswers": "Total Answers",
+        "quiz": "Quizzes",
+        "question": "Questions",
+        "answers": "Answers"
     }
 }
