@@ -1,11 +1,12 @@
 import Question from "./Question";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, NavLink } from "react-router-dom";
 import { getQuestionByQuizId, postSubmitQuiz } from "../../services/apiService";
 import { useEffect, useState } from "react";
 import _, { forEach } from 'lodash';
 import './DetailQuiz.scss'
 import ModalResult from "./ModalResult";
 import RightContent from "./Content/RightContent";
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 const DetailQuiz = () => {
 
@@ -17,6 +18,7 @@ const DetailQuiz = () => {
     const [index, setIndex] = useState(0);
     const [isShowModalResult, setIsShowModalResult] = useState(false)
     const [dataModalResult, setDataModalResult] = useState({})
+    const [isSubmitQuiz, setIsSubmitQuiz] = useState(false)
 
     useEffect(() => {
         getDetaiQuizId()
@@ -61,6 +63,7 @@ const DetailQuiz = () => {
     }
 
     const handleFinish = async () => {
+        setIsSubmitQuiz(true);
         let payload = {
             quizId: +quizId,
             answers: []
@@ -117,7 +120,12 @@ const DetailQuiz = () => {
         }
     }
     return (
-        <div className="detail-quiz-container">
+
+
+
+        <div div className="detail-quiz-container" >
+
+
             <div className="content-left">
                 <div className="title">
                     Quiz {quizId}: {title}
@@ -139,7 +147,11 @@ const DetailQuiz = () => {
                     <button className="btn btn-primary" onClick={() => handleNext()}>
                         Next
                     </button>
-                    <button className="btn btn-info" onClick={() => handleFinish()}>
+                    <button
+                        disabled={isSubmitQuiz}
+                        className="btn btn-info"
+                        onClick={() => handleFinish()}
+                    >
                         Finish
                     </button>
                 </div>
@@ -158,7 +170,8 @@ const DetailQuiz = () => {
                 setShow={setIsShowModalResult}
                 dataModalResult={dataModalResult}
             />
-        </div>
+        </div >
+
     );
 }
 

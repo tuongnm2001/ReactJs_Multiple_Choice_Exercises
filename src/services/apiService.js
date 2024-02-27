@@ -134,10 +134,19 @@ const postUpdateProfile = (username, userImage) => {
     return axios.post(`/api/v1/profile`, data)
 }
 
+const postChangePassword = (current_password, new_password) => {
+    return axios.post(`/api/v1/change-password`, { current_password, new_password })
+}
+
+const getHistory = () => {
+    return axios.get(`/api/v1/history`)
+}
+
 export {
     postCreateNewUser, getAllUser, putUpdateNewUser, deleteUser,
     getUserWithPaginate, postLoginUser, postRegisterUser, getQuizByUser,
     getQuestionByQuizId, postSubmitQuiz, postCreateNewQuiz, getAllQuizForAdmin,
     deleteQuiz, putUpdateNewQuiz, postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion,
-    postAssignQuizToUser, getQuizWithQA, postUpsertQA, postLogOut, getOverview, postUpdateProfile
+    postAssignQuizToUser, getQuizWithQA, postUpsertQA, postLogOut, getOverview, postUpdateProfile,
+    postChangePassword, getHistory
 }

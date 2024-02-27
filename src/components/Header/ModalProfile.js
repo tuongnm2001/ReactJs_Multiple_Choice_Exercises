@@ -1,8 +1,14 @@
-import Button from 'react-bootstrap/Button';
+import './ModalProfile.scss'
 import Modal from 'react-bootstrap/Modal';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import UpdateProfile from './UpdateProfile';
+import ChangePassword from './ChangePassword';
+import accountProfile from '../../assest/accountProfile.png'
+import sercurityPassword from '../../assest/sercurity.png'
+import history from '../../assest/history.png'
+import History from './History';
+
 const ModalProfile = (props) => {
 
     const { show, setShow } = props
@@ -26,14 +32,16 @@ const ModalProfile = (props) => {
                         className="mb-3"
                     >
 
-                        <Tab eventKey="ACCOUNT" title="ACCOUNT">
+                        <Tab eventKey="ACCOUNT" title={<span className='imgProfile'><img src={accountProfile} alt="Account" /> ACCOUNT</span>}>
                             <UpdateProfile />
                         </Tab>
-                        <Tab eventKey="profile" title="Profile">
-                            Tab content for Profile
+
+                        <Tab eventKey="profile" title={<span className='imgProfile'><img src={sercurityPassword} alt="Account" /> SECURITY</span>}>
+                            <ChangePassword />
                         </Tab>
-                        <Tab eventKey="contact" title="Contact">
-                            Tab content for Contact
+
+                        <Tab eventKey="contact" title={<span className='imgProfile'><img src={history} alt="Account" /> HISTORY</span>}>
+                            <History />
                         </Tab>
                     </Tabs>
                 </Modal.Body>
